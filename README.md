@@ -33,6 +33,8 @@ If there is anything wrong with this repository (documentation needed / broken t
    2. password: `vagrant`
 6. `reboot` the VM to bring up the GUI for the VM
 
+**Note** You can alter the vb.memory value in the Vagrantfile based on how much RAM your personal machine has. I wouldn't give it more than %50 of what your system max is
+
 Here's how long it took me:
 
 `real 63m43.797s`
