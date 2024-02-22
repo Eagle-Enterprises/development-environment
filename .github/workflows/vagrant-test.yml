@@ -25,6 +25,11 @@ jobs:
         # Use vagrant ssh -c to run your commands inside the Vagrant machine
         vagrant ssh -c "echo 'Running tests or scripts inside Vagrant'" | tee vagrant-ssh.log
 
+    - name: Run Security Scan
+      run: |
+        # Example: Running Trivy security scan inside Vagrant VM
+        vagrant ssh -c "curl -sfL https://github.com/aquasecurity/trivy/releases/latest/download/trivy_0.25.2_Linux-64bit.deb -o trivy.deb && sudo dpkg -i trivy.deb && trivy filesystem --exit-code 0 --no-progress /" | tee security-scan.log
+
     - name: Shutdown Vagrant Machine
       if: always()
       run: |
@@ -41,5 +46,11 @@ jobs:
       with:
         name: vagrant-ssh-logs
         path: vagrant-ssh.log
+        
+    - name: Upload Security Scan Results
+      uses: actions/upload-artifact@v2
+      with:
+        name: security-scan-results
+        path: security-scan.log
 
     # Additional steps for notifications, caching, etc., can be added here
