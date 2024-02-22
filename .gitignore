@@ -1,0 +1,4 @@
+.vagrant/bundler/global.sol
+.vagrant/machines/default/virtualbox/vagrant_cwd
+.vagrant/rgloader/loader.rb
+.vagrant/*
