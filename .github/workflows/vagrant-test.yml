@@ -10,15 +10,15 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Install Vagrant
+    - name: Install Vagrant and VirtualBox
       run: |
         sudo apt-get update
-        sudo apt-get install -y vagrant
+        sudo apt-get install -y vagrant VirtualBox
         vagrant --version
 
     - name: Initialize and up Vagrant
       run: |
-        vagrant up | tee vagrant-up.log # Capture Vagrant Up Logs
+        vagrant up --provider=virtualbox | tee vagrant-up.log # Capture Vagrant Up Logs
 
     - name: Execute tests or scripts in Vagrant
       run: |
