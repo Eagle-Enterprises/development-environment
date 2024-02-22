@@ -52,6 +52,8 @@ Here's how long it took me:
 
 `vagrant up` -------------------------------- Brings up the Virtual Machine according to the Vagrantfile in the Working Directory
 
+`vagrant ssh` ------------------------------- Secure Shell into the Virtual Machine
+
 `vagrant halt` ------------------------------ Brings down the Virtual Machine according to the Vagrantfile in the Working Directory **DO THIS BEFORE SHUTTING DOWN YOUR MACHINE**
 
 `vagrant reload` ---------------------------- Will reload the Virtual Machine ( can pass it `--provision` or `--no provision` to force it to be provisioned, which means it will install all dependencies)
