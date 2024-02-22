@@ -12,6 +12,7 @@ If there is anything wrong with this repository (documentation needed / broken t
   - vagrant-hostmanager
     - `vagrant install vagrant-hostmanager`
 - [VirtualBox](https://www.virtualbox.org/wiki/Downloads): 7.0.8
+  - [Virtual Box Oracle VM VirtualBox Extension Pack](https://download.virtualbox.org/virtualbox/7.0.14/Oracle_VM_VirtualBox_Extension_Pack-7.0.14.vbox-extpack)
 - [git](https://git-scm.com/downloads): version 2.41.0.windows.2
 - Integrated Development Environment (_of your choice_)
   - [VSCode](https://code.visualstudio.com/download) (_Adam's personal favorite; I have workspace settings and my extensions that I used included_ )
