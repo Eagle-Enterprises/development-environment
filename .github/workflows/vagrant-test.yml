@@ -7,51 +7,52 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Install Vagrant and VirtualBox
-      run: |
-        set -e
-        sudo apt-get update
-        sudo apt-get install -y vagrant virtualbox
-        vagrant --version
+      - name: Install Vagrant and VirtualBox
+        run: |
+          set -e
+          sudo apt-get update
+          sudo apt-get install -y vagrant virtualbox
+          vagrant --version
 
-    - name: Initialize and up Vagrant
-      run: |
-        vagrant up --provider=virtualbox | tee vagrant-up.log # Capture Vagrant Up Logs
+      - name: Initialize and up Vagrant
+        run: |
+          export CI=true
+          vagrant up --provider=virtualbox | tee vagrant-up.log # Capture Vagrant Up Logs
 
-    - name: Execute tests or scripts in Vagrant
-      run: |
-        # Use vagrant ssh -c to run your commands inside the Vagrant machine
-        vagrant ssh -c "echo 'Running tests or scripts inside Vagrant'" | tee vagrant-ssh.log
+      - name: Execute tests or scripts in Vagrant
+        run: |
+          # Use vagrant ssh -c to run your commands inside the Vagrant machine
+          vagrant ssh -c "echo 'Running tests or scripts inside Vagrant'" | tee vagrant-ssh.log
 
-    - name: Run Security Scan
-      run: |
-        # Example: Running Trivy security scan inside Vagrant VM
-        vagrant ssh -c "curl -sfL https://github.com/aquasecurity/trivy/releases/latest/download/trivy_0.25.2_Linux-64bit.deb -o trivy.deb && sudo dpkg -i trivy.deb && trivy filesystem --exit-code 0 --no-progress /" | tee security-scan.log
+      - name: Run Security Scan
+        run: |
+          # Example: Running Trivy security scan inside Vagrant VM
+          vagrant ssh -c "curl -sfL https://github.com/aquasecurity/trivy/releases/latest/download/trivy_0.25.2_Linux-64bit.deb -o trivy.deb && sudo dpkg -i trivy.deb && trivy filesystem --exit-code 0 --no-progress /" | tee security-scan.log
 
-    - name: Shutdown Vagrant Machine
-      if: always()
-      run: |
-        vagrant halt
+      - name: Shutdown Vagrant Machine
+        if: always()
+        run: |
+          vagrant halt
 
-    - name: Collect Vagrant Up Logs
-      uses: actions/upload-artifact@v2
-      with:
-        name: vagrant-up-logs
-        path: vagrant-up.log
+      - name: Collect Vagrant Up Logs
+        uses: actions/upload-artifact@v2
+        with:
+          name: vagrant-up-logs
+          path: vagrant-up.log
 
-    - name: Collect Vagrant SSH Logs
-      uses: actions/upload-artifact@v2
-      with:
-        name: vagrant-ssh-logs
-        path: vagrant-ssh.log
-        
-    - name: Upload Security Scan Results
-      uses: actions/upload-artifact@v2
-      with:
-        name: security-scan-results
-        path: security-scan.log
+      - name: Collect Vagrant SSH Logs
+        uses: actions/upload-artifact@v2
+        with:
+          name: vagrant-ssh-logs
+          path: vagrant-ssh.log
+
+      - name: Upload Security Scan Results
+        uses: actions/upload-artifact@v2
+        with:
+          name: security-scan-results
+          path: security-scan.log
 
     # Additional steps for notifications, caching, etc., can be added here
