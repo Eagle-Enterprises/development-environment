@@ -83,6 +83,6 @@ Vagrant.configure("2") do |config|
     sudo systemctl enable gdm
     curl -L --remote-name-all https://github.com/ArduPilot/ardupilot/archive/refs/tags/Copter-4.3.6.zip
     unzip Copter-4.3.6.zip -d /opt/
-    echo 'export PATH="$PATH:$HOME/.local/bin" >> ~/.bashrc
+    echo 'export PATH="$PATH:$HOME/.local/bin' >> ~/.bashrc
   SHELL
 end
