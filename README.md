@@ -11,6 +11,8 @@ If there is anything wrong with this repository (documentation needed / broken t
 - [Vagrant](https://developer.hashicorp.com/vagrant/downloads): 2.4.1
   - vagrant-hostmanager
     - `vagrant install vagrant-hostmanager`
+  - vagrant-vboxguest
+    - `vagrant plugin install vagrant-vbguest`
 - [VirtualBox](https://www.virtualbox.org/wiki/Downloads): 7.0.8
   - [Virtual Box Oracle VM VirtualBox Extension Pack](https://download.virtualbox.org/virtualbox/7.0.14/Oracle_VM_VirtualBox_Extension_Pack-7.0.14.vbox-extpack)
 - [git](https://git-scm.com/downloads): version 2.41.0.windows.2
