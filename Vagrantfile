@@ -1,7 +1,6 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-ci = ENV['CI'] == 'true'
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
 # backwards compatibility). Please don't change it unless you know what
@@ -13,14 +12,8 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  config.vm.box = "generic/ubuntu1804"
-
-  config.vbguest.auto_update = true
-
-  # Disable automatic box update checking. If you disable this, then
-  # boxes will only be checked for updates when the user runs
-  # `vagrant box outdated`. This is not recommended.
-  # config.vm.box_check_update = false
+  config.vm.box = "adamstillabower/eagle-enterprises"
+  config.vm.box_version = "0.0.1"
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
@@ -33,86 +26,16 @@ Vagrant.configure("2") do |config|
   # via 127.0.0.1 to disable public access
   # config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
 
-  # Create a private network, which allows host-only access to the machine
-  # using a specific IP.
-  # config.vm.network "private_network", ip: "192.168.33.10"
-
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
   # your network.
   # config.vm.network "public_network"
 
-  # Share an additional folder to the guest VM. The first argument is
-  # the path on the host to the actual folder. The second argument is
-  # the path on the guest to mount the folder. And the optional third
-  # argument is a set of non-required options.
-  # if (!ci)
-  #   config.vm.synced_folder "C:/Program\ Files/Oracle/VirtualBox", "/mnt"
-  #   config.vm.provision "shell", inline: <<-SHELL
-  #     sudo apt-get install -y linux-headers-$(uname -r) build-essential dkms
-
-  #     # Mount the Guest Additions ISO
-  #     sudo mount -o loop,ro /mnt/VBoxGuestAdditions.iso /mnt
-
-  #     # Run the installer
-  #     sudo sh /mnt/VBoxLinuxAdditions.run
-
-  #     # Cleanup
-  #     sudo umount /mnt
-  #   SHELL
-  # end
-
-  # Disable the default share of the current code directory. Doing this
-  # provides improved isolation between the vagrant box and your host
-  # by making sure your Vagrantfile isn't accessible to the vagrant box.
-  # If you use this you may want to enable additional shared subfolders as
-  # shown above.
-  # config.vm.synced_folder ".", "/vagrant", disabled: true
-
-  # Provider-specific configuration so you can fine-tune various
-  # backing providers for Vagrant. These expose provider-specific options.
-  # Example for VirtualBox:
-  #
   config.vm.provider "virtualbox" do |vb|
     # Display the VirtualBox GUI when booting the machine
     #vb.gui = !ci
-
     vb.cpus = 4
-
     # Customize the amount of memory on the VM:
     vb.memory = "4000"
   end
-  #
-  # View the documentation for the provider you are using for more
-  # information on available options.
-
-  config.trigger.after :provision do |trigger|
-    trigger.name = "Reloading VM"
-    trigger.info = "Reloading VM after provisioning"
-    trigger.run = {inline: "vagrant reload"}
-  end
-  # Enable provisioning with a shell script. Additional provisioners such as
-  # Ansible, Chef, Docker, Puppet and Salt are also available. Please see the
-  # documentation for more information about their specific syntax and use.
-  config.vm.provision "shell", inline: <<-SHELL
-    apt-get update
-    apt-get install -y apache2 ubuntu-desktop python3-dev python3-opencv python3-wxgtk4.0 python3-pip python3-matplotlib python3-lxml python3-pygame gdm3 unzip flightgear linux-headers-$(uname -r) build-essential dkms
-
-    # Mission Planner
-    sudo apt install ca-certificates gnupg
-    sudo gpg --homedir /tmp --no-default-keyring --keyring /usr/share/keyrings/mono-official-archive-keyring.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
-    echo "deb [signed-by=/usr/share/keyrings/mono-official-archive-keyring.gpg] https://download.mono-project.com/repo/ubuntu stable-focal main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
-    sudo apt update
-    sudo apt install mono-devel
-    curl -L --remote-name-all https://firmware.ardupilot.org/Tools/MissionPlanner/MissionPlanner-latest.zip
-    unzip MissionPlanner-latest.zip /opt/
-    mono /opt/MissionPlanner-latest/MissionPlanner.exe
-
-    # ArduPilot
-    pip3 install PyYAML mavproxy --user
-    sudo systemctl enable gdm
-    curl -L --remote-name-all https://github.com/ArduPilot/ardupilot/archive/refs/tags/Copter-4.3.6.zip
-    unzip Copter-4.3.6.zip -d /opt/
-    echo 'export PATH="$PATH:$HOME/.local/bin' >> ~/.bashrc
-  SHELL
 end
