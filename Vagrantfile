@@ -13,7 +13,9 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  config.vm.box = "generic/ubuntu2204"
+  config.vm.box = "generic/ubuntu1804"
+
+  config.vbguest.auto_update = true
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -44,7 +46,21 @@ Vagrant.configure("2") do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  # config.vm.synced_folder "../data", "/vagrant_data"
+  # if (!ci)
+  #   config.vm.synced_folder "C:/Program\ Files/Oracle/VirtualBox", "/mnt"
+  #   config.vm.provision "shell", inline: <<-SHELL
+  #     sudo apt-get install -y linux-headers-$(uname -r) build-essential dkms
+
+  #     # Mount the Guest Additions ISO
+  #     sudo mount -o loop,ro /mnt/VBoxGuestAdditions.iso /mnt
+
+  #     # Run the installer
+  #     sudo sh /mnt/VBoxLinuxAdditions.run
+
+  #     # Cleanup
+  #     sudo umount /mnt
+  #   SHELL
+  # end
 
   # Disable the default share of the current code directory. Doing this
   # provides improved isolation between the vagrant box and your host
@@ -59,7 +75,9 @@ Vagrant.configure("2") do |config|
   #
   config.vm.provider "virtualbox" do |vb|
     # Display the VirtualBox GUI when booting the machine
-    vb.gui = !ci
+    #vb.gui = !ci
+
+    vb.cpus = 4
 
     # Customize the amount of memory on the VM:
     vb.memory = "4000"
@@ -78,7 +96,19 @@ Vagrant.configure("2") do |config|
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
     apt-get update
-    apt-get install -y apache2 ubuntu-desktop python3-dev python3-opencv python3-wxgtk4.0 python3-pip python3-matplotlib python3-lxml python3-pygame gdm3 unzip flightgear
+    apt-get install -y apache2 ubuntu-desktop python3-dev python3-opencv python3-wxgtk4.0 python3-pip python3-matplotlib python3-lxml python3-pygame gdm3 unzip flightgear linux-headers-$(uname -r) build-essential dkms
+
+    # Mission Planner
+    sudo apt install ca-certificates gnupg
+    sudo gpg --homedir /tmp --no-default-keyring --keyring /usr/share/keyrings/mono-official-archive-keyring.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+    echo "deb [signed-by=/usr/share/keyrings/mono-official-archive-keyring.gpg] https://download.mono-project.com/repo/ubuntu stable-focal main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
+    sudo apt update
+    sudo apt install mono-devel
+    curl -L --remote-name-all https://firmware.ardupilot.org/Tools/MissionPlanner/MissionPlanner-latest.zip
+    unzip MissionPlanner-latest.zip /opt/
+    mono /opt/MissionPlanner-latest/MissionPlanner.exe
+
+    # ArduPilot
     pip3 install PyYAML mavproxy --user
     sudo systemctl enable gdm
     curl -L --remote-name-all https://github.com/ArduPilot/ardupilot/archive/refs/tags/Copter-4.3.6.zip
