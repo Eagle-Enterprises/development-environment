@@ -30,21 +30,17 @@ If there is anything wrong with this repository (documentation needed / broken t
 3. Run the following command from within the cloned repository (i.e. `/eagle-development-environment/`):
    `vagrant up`
 4. Wait for the Vagrant Command to bring up the Virtual Machine
-   1. It will take a considerable amount of time, depending on your machine and internet connectivity
-5. Login to the Virtual Machine
+   1. It may take a few minutes, depending on your machine and internet connectivity
+   2. Time snapshot of mine
+      1. real 2m32.230s
+      2. user 0m0.000s
+      3. sys 0m0.016s
+5. Bring up the VirtualBox UI and Show the `eagle-development-environment`
+6. Login to the Virtual Machine
    1. uname: `vagrant`
    2. password: `vagrant`
-6. `reboot` the VM to bring up the GUI for the VM
 
 **Note** You can alter the vb.memory value in the Vagrantfile based on how much RAM your personal machine has. I wouldn't give it more than %50 of what your system max is
-
-Here's how long it took me:
-
-`real 63m43.797s`
-
-`user 0m0.187s`
-
-`sys 0m0.156s`
 
 ## Vagrant Guide
 
