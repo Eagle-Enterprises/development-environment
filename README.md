@@ -1,5 +1,7 @@
 # eagle-development-environment
 
+![Eagle Developer](https://imgur.com/a/jvcJdnO)
+
 This repository contains the configuration of the Eagle Enterprises Development Environment used for building UAV Simulation and Training Environments.
 
 If there is anything wrong with this repository (documentation needed / broken things), please use the [Bug Template](https://github.com/Cybower/eagle-development-environment/issues/new?assignees=&labels=bug&projects=&template=bug-template.md&title=) to report the issue
