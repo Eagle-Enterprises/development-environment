@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  config.vm.box = "generic/ubuntu2204"
+  config.vm.box = "generic/ubuntu1804"
 
   config.vbguest.auto_update = true
 
@@ -75,7 +75,7 @@ Vagrant.configure("2") do |config|
   #
   config.vm.provider "virtualbox" do |vb|
     # Display the VirtualBox GUI when booting the machine
-    vb.gui = !ci
+    #vb.gui = !ci
 
     vb.cpus = 4
 
@@ -98,11 +98,21 @@ Vagrant.configure("2") do |config|
     apt-get update
     apt-get install -y apache2 ubuntu-desktop python3-dev python3-opencv python3-wxgtk4.0 python3-pip python3-matplotlib python3-lxml python3-pygame gdm3 unzip flightgear linux-headers-$(uname -r) build-essential dkms
 
+    # Mission Planner
+    sudo apt install ca-certificates gnupg
+    sudo gpg --homedir /tmp --no-default-keyring --keyring /usr/share/keyrings/mono-official-archive-keyring.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+    echo "deb [signed-by=/usr/share/keyrings/mono-official-archive-keyring.gpg] https://download.mono-project.com/repo/ubuntu stable-focal main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
+    sudo apt update
+    sudo apt install mono-devel
+    curl -L --remote-name-all https://firmware.ardupilot.org/Tools/MissionPlanner/MissionPlanner-latest.zip
+    unzip MissionPlanner-latest.zip /opt/
+    mono /opt/MissionPlanner-latest/MissionPlanner.exe
+
+    # ArduPilot
     pip3 install PyYAML mavproxy --user
     sudo systemctl enable gdm
     curl -L --remote-name-all https://github.com/ArduPilot/ardupilot/archive/refs/tags/Copter-4.3.6.zip
     unzip Copter-4.3.6.zip -d /opt/
     echo 'export PATH="$PATH:$HOME/.local/bin' >> ~/.bashrc
-
   SHELL
 end
