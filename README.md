@@ -1,6 +1,6 @@
 # eagle-development-environment
 
-![Eagle Developer](https://imgur.com/jtczs2f)
+![Eagle Developer](https://imgur.com/jtczs2f.jpg)
 
 This repository contains the configuration of the Eagle Enterprises Development Environment used for building UAV Simulation and Training Environments.
 
