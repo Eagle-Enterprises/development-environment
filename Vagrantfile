@@ -16,6 +16,7 @@ Vagrant.configure("2") do |config|
   config.vm.box = "devc3100/ubuntu-24.10-desktop"
 
   config.ssh.username = "dev-box"
+  config.ssh.password = "vagrant"
   #config.vbguest.auto_update = true
 
   # Disable automatic box update checking. If you disable this, then
@@ -87,11 +88,11 @@ Vagrant.configure("2") do |config|
   # View the documentation for the provider you are using for more
   # information on available options.
 
-  config.trigger.after :provision do |trigger|
-    trigger.name = "Reloading VM"
-    trigger.info = "Reloading VM after provisioning"
-    trigger.run = {inline: "vagrant reload"}
-  end
+  # config.trigger.after :provision do |trigger|
+  #   trigger.name = "Reloading VM"
+  #   trigger.info = "Reloading VM after provisioning"
+  #   trigger.run = {inline: "vagrant reload"}
+  # end
   # Enable provisioning with a shell script. Additional provisioners such as
   # Ansible, Chef, Docker, Puppet and Salt are also available. Please see the
   # documentation for more information about their specific syntax and use.
@@ -106,8 +107,8 @@ Vagrant.configure("2") do |config|
     sudo apt update
     sudo apt install mono-devel
     curl -L --remote-name-all https://firmware.ardupilot.org/Tools/MissionPlanner/MissionPlanner-latest.zip
-    unzip MissionPlanner-latest.zip /opt/
-    mono /opt/MissionPlanner-latest/MissionPlanner.exe
+    unzip MissionPlanner-latest.zip /opt/MissionPlanner
+    mono /opt/MissionPlanner/MissionPlanner.exe
 
     # ArduPilot
     pip3 install PyYAML mavproxy --user --break-system-packages
