@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
   config.vm.box = "adamstillabower/eagle-enterprises"
-  config.vm.box_version = "0.0.1"
+  config.vm.box_version = "0.0.2"
   config.ssh.username = "dev-box"
   config.ssh.password = "vagrant"
 
