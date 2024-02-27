@@ -13,9 +13,10 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  config.vm.box = "generic/ubuntu1804"
+  config.vm.box = "devc3100/ubuntu-24.10-desktop"
 
-  config.vbguest.auto_update = true
+  config.ssh.username = "dev-box"
+  #config.vbguest.auto_update = true
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -95,8 +96,8 @@ Vagrant.configure("2") do |config|
   # Ansible, Chef, Docker, Puppet and Salt are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
-    apt-get update
-    apt-get install -y apache2 ubuntu-desktop python3-dev python3-opencv python3-wxgtk4.0 python3-pip python3-matplotlib python3-lxml python3-pygame gdm3 unzip flightgear linux-headers-$(uname -r) build-essential dkms
+   sudo apt upgrade
+   sudo apt-get install -y apache2 curl python3-dev python3-opencv python3-wxgtk4.0 python3-pip python3-matplotlib python3-lxml python3-pygame gdm3 unzip flightgear linux-headers-$(uname -r) build-essential dkms
 
     # Mission Planner
     sudo apt install ca-certificates gnupg
@@ -109,7 +110,7 @@ Vagrant.configure("2") do |config|
     mono /opt/MissionPlanner-latest/MissionPlanner.exe
 
     # ArduPilot
-    pip3 install PyYAML mavproxy --user
+    pip3 install PyYAML mavproxy --user --break-system-packages
     sudo systemctl enable gdm
     curl -L --remote-name-all https://github.com/ArduPilot/ardupilot/archive/refs/tags/Copter-4.3.6.zip
     unzip Copter-4.3.6.zip -d /opt/
