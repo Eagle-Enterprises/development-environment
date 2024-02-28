@@ -44,11 +44,26 @@ If there is anything wrong with this repository (documentation needed / broken t
 
 **Note** You can alter the vb.memory value in the Vagrantfile based on how much RAM your personal machine has. I wouldn't give it more than %50 of what your system max is
 
+## Git Guide
+
+### Git Useful Commands
+
+`git clone <url>` -------------------- Clones a git repository. URL can be found by clicking the green code button on the repository webpage
+
+`git status` ------------------------- Shows you the status of your local
+
+### Useful Links
+
+- [First Time Git Setup](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup)
+- [GitHub Skills Page](https://skills.github.com/)
+- [The Odin Project](https://www.theodinproject.com/lessons/foundations-introduction-to-git)
+- [Learning Git Branching](https://learngitbranching.js.org/)
+
 ## Vagrant Guide
 
 ### [Documentation](https://developer.hashicorp.com/vagrant/docs)
 
-### Useful Commands
+### Vagrant Useful Commands
 
 `vagrant up` -------------------------------- Brings up the Virtual Machine according to the Vagrantfile in the Working Directory
 
