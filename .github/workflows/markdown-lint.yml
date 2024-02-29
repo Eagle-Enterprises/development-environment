@@ -8,12 +8,10 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: ./.github/actions/checkout@main
+        uses: ./.github/actions/checkout
 
       - name: Set up Node.js
-        uses: ./github/actions/setup-node@main
-        with:
-          node-version: "14"
+        uses: ./github/actions/setup-node
 
       - name: Install markdownlint-cli
         run: npm install -g markdownlint-cli
