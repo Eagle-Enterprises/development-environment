@@ -68,7 +68,7 @@ If there is anything wrong with this repository (documentation needed / broken t
     2. Use the search bar at the top to search for "Terminal".
     3. Click on the resulting option.
   2. Type in /opt/MissionPlanner/MissionPlanner.exe into the terminal.
-3. To shutdown the virtual machine, click the 'X' button on the Virtual Box GUI, select "Save machine state", enter this command on a new terminal in VS Code `vagrant halt`. Virtual Box should show the machine in a "Powered Off" state. 
+3. To shutdown the virtual machine, run the following command on a new terminal in VS Code `vagrant halt`. Virtual Box should show the machine in a "Powered Off" state. 
 
 ## Git Guide
 
