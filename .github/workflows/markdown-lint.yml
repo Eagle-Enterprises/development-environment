@@ -12,6 +12,8 @@ jobs:
 
       - name: Set up Node.js
         uses: Eagle-Enterprises/action-setup-node/setup-node@main
+        with:
+          node-version: 14
 
       - name: Install markdownlint-cli
         run: npm install -g markdownlint-cli
