@@ -8,7 +8,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: Eagle-Enterprises/action-checkout/checkout@main
+        uses: actions/checkout@v2
 
       - name: Install Vagrant and VirtualBox
         run: |
@@ -38,19 +38,19 @@ jobs:
           vagrant halt
 
       - name: Collect Vagrant Up Logs
-        uses: Eagle-Enterprises/action-upload-artifact/upload-artifact@main
+        uses: actions/upload-artifact@v2
         with:
           name: vagrant-up-logs
           path: vagrant-up.log
 
       - name: Collect Vagrant SSH Logs
-        uses: Eagle-Enterprises/action-upload-artifact/upload-artifact@main
+        uses: actions/upload-artifact@v2
         with:
           name: vagrant-ssh-logs
           path: vagrant-ssh.log
 
       - name: Upload Security Scan Results
-        uses: Eagle-Enterprises/action-upload-artifact/upload-artifact@main
+        uses: actions/upload-artifact@v2
         with:
           name: security-scan-results
           path: security-scan.log
