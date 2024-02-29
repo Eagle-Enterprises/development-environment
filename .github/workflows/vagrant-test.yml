@@ -8,7 +8,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: ./github/actions/checkout@main
+        uses: ./github/actions/checkout
 
       - name: Install Vagrant and VirtualBox
         run: |
@@ -38,19 +38,19 @@ jobs:
           vagrant halt
 
       - name: Collect Vagrant Up Logs
-        uses: ./github/actions/upload-artifact@main
+        uses: ./github/actions/upload-artifact
         with:
           name: vagrant-up-logs
           path: vagrant-up.log
 
       - name: Collect Vagrant SSH Logs
-        uses: ./github/actions/upload-artifact@main
+        uses: ./github/actions/upload-artifact
         with:
           name: vagrant-ssh-logs
           path: vagrant-ssh.log
 
       - name: Upload Security Scan Results
-        uses: ./github/actions/upload-artifact@main
+        uses: ./github/actions/upload-artifact
         with:
           name: security-scan-results
           path: security-scan.log
