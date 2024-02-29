@@ -51,7 +51,7 @@ If there is anything wrong with this repository (documentation needed / broken t
       user session specific services (Shared Clipboard, Drag and Drop, Seamless or
       Guest Screen Resize) were not restarted automatically*
 
-5. Bring up the VirtualBox UI and Show the `eagle-development-environment`
+5. Bring up the VirtualBox UI and click the `eagle-development-environment` VM.
 6. Login to the Virtual Machine
    1. uname: `vagrant`
    2. password: `vagrant`
