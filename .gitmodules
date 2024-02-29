@@ -1,0 +1,9 @@
+[submodule ".github/actions/checkout"]
+	path = .github/actions/checkout
+	url = https://github.com/actions/checkout.git
+[submodule ".github/actions/setup-node"]
+	path = .github/actions/setup-node
+	url = https://github.com/actions/setup-node.git
+[submodule ".github/actions/upload-artifact"]
+	path = .github/actions/upload-artifact
+	url = https://github.com/actions/upload-artifact.git
