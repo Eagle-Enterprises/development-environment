@@ -100,5 +100,5 @@ to be brought up with another `vagrant up` **Any work not saved in the
 - In Bash:
   `cat vs-code-extensions-list.txt | xargs -L 1 code --install-extension`
 
-- In PowerShell:
-  `Get-Content vs-code-extensions-list.txt | ForEach-Object { code --install-extension $\_ }`
+- In PowerShell: Get-Content vs-code-extensions-list.txt | ForEach-Object { code
+  --install-extension $\_ }
