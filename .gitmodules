@@ -7,3 +7,15 @@
 [submodule ".github/actions/upload-artifact"]
 	path = .github/actions/upload-artifact
 	url = https://github.com/actions/upload-artifact.git
+[submodule "C2"]
+	path = C2
+	url = https://github.com/Eagle-Enterprises/C2.git
+[submodule "UAV-Asset"]
+	path = UAV-Asset
+	url = https://github.com/Eagle-Enterprises/UAV-Asset.git
+[submodule "Training-Environment"]
+	path = Training-Environment
+	url = https://github.com/Eagle-Enterprises/Training-Environment.git
+[submodule "Sensors-Signals"]
+	path = Sensors-Signals
+	url = https://github.com/Eagle-Enterprises/Sensors-Signals.git
