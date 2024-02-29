@@ -11,7 +11,7 @@ jobs:
         uses: Eagle-Enterprises/action-checkout/checkout@main
 
       - name: Set up Node.js
-        uses: ./.github/actions/setup-node
+        uses: ./.github/actions/setup-node@main
         with:
           node-version: 14
 
