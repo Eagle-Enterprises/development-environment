@@ -133,6 +133,7 @@ to be brought up with another `vagrant up` **Any work not saved in the
 `/vagrant` directory will be lost**
 
 ## VS Code Extensions
+
 This is completely optional, just if you're curious as to which I'm using:
 
 - In Bash:
