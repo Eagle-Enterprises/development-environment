@@ -15,6 +15,7 @@ Vagrant.configure("2") do |config|
   config.vm.box = "adamstillabower/eagle-enterprises"
   config.vm.box_version = "0.0.3"
   config.ssh.username = "dev-box"
+  config.vm.box_architecture = "amd64"
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
