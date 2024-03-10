@@ -32,8 +32,7 @@ to report the issue
     I have workspace settings and my extensions that I used included_ )
   - [Eclipse](https://www.eclipse.org/downloads/)
   - [JetBrains](https://www.jetbrains.com/products/)
-  - [Notepad++](https://notepad-plus-plus.org/downloads/)
-  (_If you're up to a challenge_)
+  - [Notepad++](https://notepad-plus-plus.org/downloads/)(_If you're up to a challenge_)
   - [VIM](https://www.vim.org/download.php) (_If you're a masochist_)
 
 ## Set Up Guide
