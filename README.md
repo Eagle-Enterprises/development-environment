@@ -202,6 +202,7 @@ _This is completely optional, just if you're curious as to which I'm using_
   your host system (where the vagrant file is). The repository directories
   copied there will be bidirectionally synced to the VM.
 
-### Is the developer environment a shared environment or hosted only locally on my machine?
+### Is the developer environment a shared environment or hosted only locally on
+### my machine?
 
 - The developer environment VM is local to each host device.
