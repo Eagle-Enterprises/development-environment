@@ -1,6 +1,6 @@
 {
   "[markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
     "editor.wordWrap": "on",
     "editor.formatOnSave": true
   },

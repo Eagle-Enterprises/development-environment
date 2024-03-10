@@ -184,7 +184,7 @@ _This is completely optional, just if you're curious as to which I'm using_
   You may need to click aditionally on "Change high DPI settings". Then, shut
   down the VM as per the VM Usage Guide and restart VirtualBox.
 
-### Mission Planner does not start up/has errors
+### Mission Planner does not start up or has errors
 
 - Ensure the VM has at least 4 processors.
   - Make sure the VM is off.
