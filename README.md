@@ -91,8 +91,7 @@ system max is
 ## VM Mission Planner Usage Guide
 
 1. To open Mission Planner in the VM use the following command:
-  `sudo mono /opt/MissionPlanner/MissionPlanner.exe`
-
+   `sudo mono /opt/MissionPlanner/MissionPlanner.exe`
 
 ## Git Guide
 
@@ -172,8 +171,9 @@ _This is completely optional, just if you're curious as to which I'm using_
 
 ### Vagrant up is taking forever or not working
 
-- The time that the vagrant takes to build the box is heavily dependent on your
-  machine's hardware. It can definitely take much longer than expected.
+- The time that the vagrant takes to load the virtual machine is heavily
+  dependent on your machine's hardware. It can definitely take much longer than
+  expected.
 - Make sure your machine has at least 4 MB available of RAM (memory) to provide
   to the Box. If your machine has less than that, modify the vagrant file
   vb.memory value to be less than 50% of your machine's RAM.
