@@ -88,6 +88,12 @@ system max is
    in VS Code: `vagrant halt`. Virtual Box should show the machine in a "Powered
    Off" state.
 
+## VM Mission Planner Usage Guide
+
+1. To open Mission Planner in the VM use the following command:
+  `sudo mono /opt/MissionPlanner/MissionPlanner.exe`
+
+
 ## Git Guide
 
 ### Git Useful Commands
@@ -137,11 +143,6 @@ _This is completely optional, just if you're curious as to which I'm using_
 
 - In PowerShell: Get-Content vs-code-extensions-list.txt | ForEach-Object { code
   --install-extension $\_ }
-
-## Using Mission Planner in the VM
-
-- To open Mission Planner in the VM use the following command:
-  `sudo mono /opt/MissionPlanner/MissionPlanner.exe`
 
 ## Troubleshooting Guide
 
@@ -194,7 +195,7 @@ _This is completely optional, just if you're curious as to which I'm using_
 
 ## Q & A
 
-### How does the repository connect to the VM?
+### How does the C2 repository connect to the VM?
 
 - To get any repos into the VM, please clone them in the
   `/eagle-development-environment` directory corresponding to this repository on
@@ -203,4 +204,4 @@ _This is completely optional, just if you're curious as to which I'm using_
 
 ### Is the developer environment a shared environment or hosted only locally on my machine?
 
-The developer environment VM is local to each host device.
+- The developer environment VM is local to each host device.
