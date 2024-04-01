@@ -10,7 +10,6 @@
   "files.autoSave": "onFocusChange",
   "python.linting.enabled": true,
   "git.autofetch": true,
-  "git.confirmSync": true,
   "git.confirmSyncDelay": 1000,
   "security.workspace.trust.enabled": true,
   "editor.wordWrap": "on",
